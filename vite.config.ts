@@ -9,7 +9,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'gsap-vendor': ['gsap', 'gsap-trial'],
+          'gsap-vendor': ['gsap'],
           'react-vendor': ['react', 'react-dom'],
           'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
           'ui-vendor': ['react-icons'],
@@ -21,6 +21,6 @@ export default defineConfig({
     minify: 'esbuild',
   },
   optimizeDeps: {
-    include: ['gsap', 'gsap-trial', 'three'],
+    include: ['gsap', 'three'],
   },
 });
