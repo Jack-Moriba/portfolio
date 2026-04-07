@@ -8,9 +8,20 @@ import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
+import FuturisticFeatures from "./FuturisticFeatures";
+import { ThemeProvider } from "../context/ThemeContext";
 import setSplitText from "./utils/splitText";
+import ErrorBoundary from "./ErrorBoundary";
+import SkipLinks from "./SkipLinks";
+import Toast from "./Toast";
 
+// Lazy load heavy components
 const TechStack = lazy(() => import("./TechStack"));
+const Services = lazy(() => import("./Services"));
+const Testimonials = lazy(() => import("./Testimonials"));
+const CinematicIntro = lazy(() => import("./CinematicIntro"));
+const AnalyticsDashboard = lazy(() => import("./AnalyticsDashboard"));
+const EasterEggGame = lazy(() => import("./EasterEggGame"));
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -27,32 +38,54 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, []);
 
   return (
-    <div className="container-main">
-      <Cursor />
-      <Navbar />
-      <SocialIcons />
-      {isDesktopView && children}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <div className="container-main">
-            <Landing>{!isDesktopView && children}</Landing>
-            <About />
-            <WhatIDo />
-            <Career />
-            <Work />
-            {isDesktopView && (
-              <Suspense fallback={<div>Loading....</div>}>
-                <TechStack />
-              </Suspense>
-            )}
-            <Contact />
+    <ErrorBoundary>
+      <ThemeProvider>
+        <SkipLinks />
+        <Toast />
+        <Suspense fallback={null}>
+          <CinematicIntro />
+        </Suspense>
+        <div className="container-main" role="document">
+          <Cursor />
+          <header role="banner">
+            <Navbar />
+          </header>
+          <SocialIcons />
+          <FuturisticFeatures />
+          <Suspense fallback={null}>
+            <AnalyticsDashboard />
+            <EasterEggGame />
+          </Suspense>
+          {isDesktopView && children}
+          <div id="smooth-wrapper">
+            <div id="smooth-content">
+              <main className="container-main" id="main-content" role="main">
+                <Landing>{!isDesktopView && children}</Landing>
+                <About />
+                <WhatIDo />
+                <Career />
+                <Work />
+                <Suspense fallback={<div role="status" aria-label="Chargement des services">Loading...</div>}>
+                  <Services />
+                </Suspense>
+                <Suspense fallback={<div role="status" aria-label="Chargement des témoignages">Loading...</div>}>
+                  <Testimonials />
+                </Suspense>
+                {isDesktopView && (
+                  <Suspense fallback={<div role="status" aria-label="Chargement des technologies">Loading....</div>}>
+                    <TechStack />
+                  </Suspense>
+                )}
+                <Contact />
+              </main>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 };
 

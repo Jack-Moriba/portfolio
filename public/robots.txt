@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jacques-moriba-portfolio.vercel.app/sitemap.xml
+
+# Disallow admin and private routes (if any)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Crawl-delay for bots
+Crawl-delay: 10
+
+# Allow Googlebot full access
+User-agent: Googlebot
+Allow: /
+
+# Allow Bingbot full access  
+User-agent: Bingbot
+Allow: /

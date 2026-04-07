@@ -1,0 +1,321 @@
+.glitch-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Scanlines */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 3px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Glitch Overlay */
+.glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.glitch-overlay.active {
+  opacity: 1;
+  animation: glitchEffect 0.2s ease-in-out;
+}
+
+@keyframes glitchEffect {
+  0%, 100% {
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 0, 255, 0.1) 50%,
+      transparent 70%
+    );
+    transform: translateX(0);
+  }
+  25% {
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(0, 255, 255, 0.1) 50%,
+      transparent 70%
+    );
+    transform: translateX(-2px);
+  }
+  50% {
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 0, 0.1) 50%,
+      transparent 70%
+    );
+    transform: translateX(2px);
+  }
+  75% {
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(0, 255, 0, 0.1) 50%,
+      transparent 70%
+    );
+    transform: translateX(-1px);
+  }
+}
+
+/* Glitch Text */
+.glitch-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-weight: bold;
+  color: #00ffff;
+  text-shadow: 
+    2px 2px 0 #ff00ff,
+    -2px -2px 0 #00ff00;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  animation: glitchText1 0.5s infinite;
+  color: #ff00ff;
+  z-index: -1;
+}
+
+.glitch-text::after {
+  animation: glitchText2 0.5s infinite;
+  color: #00ff00;
+  z-index: -2;
+}
+
+@keyframes glitchText1 {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(20% 0 30% 0);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    clip-path: inset(50% 0 20% 0);
+    transform: translate(2px, -2px);
+  }
+  60% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(1px, -1px);
+  }
+}
+
+@keyframes glitchText2 {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, -1px);
+  }
+  40% {
+    clip-path: inset(20% 0 50% 0);
+    transform: translate(-2px, 1px);
+  }
+  60% {
+    clip-path: inset(30% 0 40% 0);
+    transform: translate(1px, -2px);
+  }
+  80% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(-1px, 2px);
+  }
+}
+
+/* Noise Overlay */
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+  animation: noiseAnimation 0.2s steps(10) infinite;
+}
+
+@keyframes noiseAnimation {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-1%, -1%);
+  }
+  20% {
+    transform: translate(1%, 1%);
+  }
+  30% {
+    transform: translate(-1%, 1%);
+  }
+  40% {
+    transform: translate(1%, -1%);
+  }
+  50% {
+    transform: translate(-1%, 0);
+  }
+  60% {
+    transform: translate(1%, 0);
+  }
+  70% {
+    transform: translate(0, -1%);
+  }
+  80% {
+    transform: translate(0, 1%);
+  }
+  90% {
+    transform: translate(-1%, -1%);
+  }
+}
+
+/* Cyberpunk Grid */
+.cyberpunk-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 10s linear infinite;
+  z-index: 1;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Floating Particles */
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.floating-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  border-radius: 50%;
+  left: var(--x);
+  top: var(--y);
+  animation: floatParticle var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  box-shadow: 0 0 10px currentColor;
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(50px, -50px) scale(1.5);
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+/* Mode Cyberpunk */
+[data-theme="cyberpunk"] .glitch-text {
+  color: #ff00ff;
+  text-shadow: 
+    2px 2px 0 #00ffff,
+    -2px -2px 0 #ffff00;
+}
+
+[data-theme="cyberpunk"] .scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 0, 255, 0.15) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 255, 255, 0.15) 3px
+  );
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .glitch-text {
+    font-size: 2rem;
+  }
+  
+  .cyberpunk-grid {
+    background-size: 25px 25px;
+  }
+}

@@ -1,3 +1,12 @@
+/* ── Focus Styles for Accessibility ── */
+.filter-btn:focus-visible,
+.carousel-arrow:focus-visible,
+.project-link:focus-visible,
+.indicator:focus-visible {
+  outline: 2px solid var(--accentColor);
+  outline-offset: 2px;
+}
+
 /* ── Work Section ── */
 .work-section {
   position: relative;
@@ -105,6 +114,40 @@
   color: #adacac;
   margin: 6px 0 0;
   font-size: 15px;
+}
+
+/* ── Project Meta & Link ── */
+.project-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.project-year {
+  font-size: 14px;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--accentColor);
+  background: transparent;
+  border: 1px solid var(--accentColor);
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  background: var(--accentColor);
+  color: #000;
 }
 
 .carousel-image-wrapper {

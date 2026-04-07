@@ -10,51 +10,79 @@ const Contact = () => {
           <div className="contact-box">
             <h4>Email</h4>
             <p>
-              <a href="mailto:rajeshchittyal21@gmail.com" data-cursor="disable">
-                rajeshchittyal21@gmail.com
+              <a href="mailto:theajamesmoriba@gmail.com" data-cursor="disable">
+                theajamesmoriba@gmail.com
               </a>
             </p>
-            <h4>Education</h4>
-            <p>BSc in Computer Science</p>
+            <h4>Formation</h4>
+            <p>Étudiant en Ingénierie Logicielle à l'Université Nongo Conakry (UNC)</p>
           </div>
           <div className="contact-box">
-            <h4>Social</h4>
+            <h4>Réseaux Sociaux</h4>
             <a
-              href="https://github.com/raxx21"
+              href="https://github.com/Jack-Moriba"
               target="_blank"
+              rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              aria-label="GitHub"
             >
-              Github <MdArrowOutward />
+              GitHub <MdArrowOutward />
             </a>
             <a
-              href="https://www.linkedin.com/in/rajesh-chityal-2a70141b3"
+              href="https://linkedin.com/in/Jacques-Moriba-THEA"
               target="_blank"
+              rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              aria-label="LinkedIn"
             >
-              Linkedin <MdArrowOutward />
+              LinkedIn <MdArrowOutward />
             </a>
             <a
-              href="https://x.com/raxx21_official"
+              href="https://behance.net/Jacques-Moriba-Thea"
               target="_blank"
+              rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              aria-label="Behance"
             >
-              Twitter <MdArrowOutward />
+              Behance <MdArrowOutward />
             </a>
             <a
-              href="https://www.instagram.com/therajeshchityal"
+              href="https://instagram.com/me_lil.boy_"
               target="_blank"
+              rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              aria-label="Instagram"
             >
               Instagram <MdArrowOutward />
+            </a>
+            <a
+              href="https://facebook.com/Jacques-Moriba-THEA"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="disable"
+              className="contact-social"
+              aria-label="Facebook"
+            >
+              Facebook <MdArrowOutward />
+            </a>
+            <a
+              href="https://pinterest.com/humcompany"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="disable"
+              className="contact-social"
+              aria-label="Pinterest"
+            >
+              Pinterest <MdArrowOutward />
             </a>
           </div>
           <div className="contact-box">
             <h2>
-              Designed and Developed <br /> by <span>Rajesh Chityal</span>
+              Conçu et Développé <br /> par <span>Jacques Moriba Thea</span>
             </h2>
             <h5>
               <MdCopyright /> 2025

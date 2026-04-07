@@ -1,5 +1,5 @@
 {
-  "name": "rajesh-portfolio",
+  "name": "jacques-moriba-thea-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,8 +12,8 @@
   "dependencies": {
     "@gsap/react": "^2.1.1",
     "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "^9.120.4",
-    "@react-three/fiber": "^8.17.10",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
     "@react-three/postprocessing": "^2.16.3",
     "@react-three/rapier": "^1.5.0",
     "@types/three": "^0.168.0",

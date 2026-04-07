@@ -1,0 +1,308 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* Font Variables */
+:root {
+  --font-primary: 'Orbitron', monospace;
+  --font-secondary: 'JetBrains Mono', monospace;
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--font-system);
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+/* Headings - Orbitron (Futuriste) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.landing-intro h1 {
+  font-family: var(--font-primary);
+  font-weight: 900;
+  font-size: 4rem;
+  letter-spacing: 0.1em;
+}
+
+.landing-intro h2 {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Code & Technical Elements - JetBrains Mono */
+.tech-name,
+.tech-level,
+.tools-label,
+.project-tag,
+.skill-tag,
+.navbar-connect,
+.contact-social {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Technical Descriptions */
+.techstack-subtitle,
+.services-subtitle,
+.testimonials-subtitle {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Code Blocks & Technical Content */
+.code-snippet,
+.technical-text,
+.debug-info {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--accent-primary);
+}
+
+/* Navigation Elements */
+.nav-item {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Glitch Text Effects */
+.glitch-text {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+}
+
+/* Futuristic Elements */
+.futuristic-text,
+.cyberpunk-text {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Technical Labels */
+.category-title,
+.service-title,
+.testimonial-name {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Project Metadata */
+.project-year,
+.project-tools,
+.service-meta {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Terminal/Console Style */
+.terminal-text,
+.console-output {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  background: #000;
+  color: #00ff00;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Technical Skills Lists */
+.tech-list,
+.skill-list {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+}
+
+/* Buttons with Technical Feel */
+.tech-button,
+.code-button {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--accent-primary);
+  background: transparent;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.tech-button:hover,
+.code-button:hover {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px var(--accent-primary);
+}
+
+/* Technical Badges */
+.tech-badge,
+.code-badge {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--accent-secondary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Loading & Status Text */
+.loading-text,
+.status-text {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-primary);
+}
+
+/* Error Messages */
+.error-text,
+.warning-text {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.error-text {
+  color: #ff4444;
+}
+
+.warning-text {
+  color: #ffaa00;
+}
+
+/* Success Messages */
+.success-text {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #44ff44;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .landing-intro h1 {
+    font-size: 2.5rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .landing-intro h2 {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .nav-item {
+    font-size: 0.8rem;
+  }
+  
+  .techstack-subtitle,
+  .services-subtitle,
+  .testimonials-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-intro h1 {
+    font-size: 2rem;
+  }
+  
+  .nav-item {
+    font-size: 0.7rem;
+  }
+}
+
+/* Dark Mode Typography Adjustments */
+[data-theme="dark"] {
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+}
+
+[data-theme="dark"] .terminal-text,
+[data-theme="dark"] .console-output {
+  background: #0a0a0a;
+  color: #00ffff;
+  border-color: #00ffff;
+}
+
+/* Cyberpunk Theme Typography */
+[data-theme="cyberpunk"] {
+  --text-primary: #00ffff;
+  --text-secondary: #ff00ff;
+  --text-tertiary: #ffff00;
+}
+
+[data-theme="cyberpunk"] .glitch-text {
+  font-family: var(--font-secondary);
+  color: #ff00ff;
+  text-shadow: 
+    2px 2px 0 #00ffff,
+    -2px -2px 0 #ffff00;
+}
+
+/* Font Loading States */
+.font-loading {
+  font-family: var(--font-system);
+}
+
+.font-loaded {
+  font-family: var(--font-primary);
+}
+
+/* Performance Optimization */
+.font-display-swap {
+  font-display: swap;
+}
+
+/* Custom Font Weights */
+.font-light {
+  font-weight: 400;
+}
+
+.font-regular {
+  font-weight: 500;
+}
+
+.font-medium {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-black {
+  font-weight: 900;
+}

@@ -1,0 +1,173 @@
+.holographic-card {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.holographic-card.hovered {
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 100px rgba(0, 255, 255, 0.1);
+}
+
+/* Holographic Layers */
+.holo-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.holographic-card.hovered .holo-layer {
+  opacity: 1;
+}
+
+/* Rainbow Effect */
+.holo-rainbow {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 0, 0.3) 0%,
+    rgba(255, 127, 0, 0.3) 14%,
+    rgba(255, 255, 0, 0.3) 28%,
+    rgba(0, 255, 0, 0.3) 42%,
+    rgba(0, 0, 255, 0.3) 56%,
+    rgba(75, 0, 130, 0.3) 70%,
+    rgba(143, 0, 255, 0.3) 84%,
+    rgba(255, 0, 255, 0.3) 100%
+  );
+  mix-blend-mode: overlay;
+  animation: rainbowShift 3s linear infinite;
+}
+
+@keyframes rainbowShift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* Grid Pattern */
+.holo-grid {
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridMove 2s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
+}
+
+/* Scan Line */
+.holo-scan {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 100% 50%;
+  animation: scanMove 2s ease-in-out infinite;
+}
+
+@keyframes scanMove {
+  0%, 100% { background-position: 0 -100%; }
+  50% { background-position: 0 200%; }
+}
+
+/* Noise Texture */
+.holo-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+}
+
+/* Dynamic Shine */
+.holo-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at var(--holo-x, 50%) var(--holo-y, 50%),
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(0, 255, 255, 0.2) 20%,
+    transparent 50%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.holographic-card.hovered .holo-shine {
+  opacity: 1;
+}
+
+/* Content */
+.holo-content {
+  position: relative;
+  z-index: 10;
+  padding: 1.5rem;
+  transform: translateZ(20px);
+}
+
+/* Edge Glow */
+.holo-edge {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 18px;
+  background: linear-gradient(
+    45deg,
+    #00ffff,
+    #ff00ff,
+    #00ffff,
+    #ff00ff
+  );
+  background-size: 400% 400%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: gradientRotate 3s ease infinite;
+}
+
+.holographic-card.hovered .holo-edge {
+  opacity: 0.5;
+}
+
+@keyframes gradientRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 3D Tilt Effect */
+.holographic-card {
+  transform-style: preserve-3d;
+}
+
+.holographic-card.hovered {
+  transform: translateZ(50px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .holographic-card {
+    transform: none !important;
+  }
+  
+  .holo-edge {
+    display: none;
+  }
+}

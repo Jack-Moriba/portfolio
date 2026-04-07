@@ -1,0 +1,69 @@
+.particle-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle-canvas {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+/* Mode futuriste */
+[data-theme="dark"] .particle-canvas {
+  background: linear-gradient(135deg, #000000 0%, #0f172a 50%, #1e293b 100%);
+}
+
+[data-theme="cyberpunk"] .particle-canvas {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #330066 100%);
+}
+
+/* Effet de scan futuriste */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.particle-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 255, 0.8) 50%, 
+    transparent 100%
+  );
+  animation: scanline 8s linear infinite;
+  z-index: 1;
+}
+
+/* Grid overlay pour effet futuriste */
+.particle-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .particle-background::after {
+    background-size: 25px 25px;
+  }
+}

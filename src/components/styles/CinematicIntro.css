@@ -1,0 +1,303 @@
+.cinematic-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 10003;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scan Line Effect */
+.scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+  z-index: 100;
+}
+
+.scan-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 50;
+}
+
+.scan-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 1rem 0;
+  opacity: 0;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+/* Tear Effect */
+.tear-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 40;
+}
+
+.tear-panel {
+  flex: 1;
+  background: linear-gradient(90deg, #0a0a0a, #1a1a2e, #0a0a0a);
+  border-top: 1px solid #00ffff;
+  border-bottom: 1px solid #00ffff;
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+}
+
+.tear-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.03) 2px,
+    rgba(0, 255, 255, 0.03) 4px
+  );
+}
+
+.panel-glitch {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #00ffff;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+/* Main Content */
+.cinematic-content {
+  position: relative;
+  z-index: 60;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cinematic-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 5rem;
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-shadow: 
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 40px #00ffff;
+  opacity: 0;
+}
+
+.cinematic-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  color: #ff00ff;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-top: 1rem;
+  opacity: 0;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+.cinematic-line {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  margin: 2rem auto 0;
+}
+
+/* Background Particles */
+.bg-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.bg-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #00ffff;
+  border-radius: 50%;
+  opacity: 0.5;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+/* Mission Impossible Overlay */
+.mission-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.target-box {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.target-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #00ffff;
+  opacity: 0;
+}
+
+.target-corner.tl {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.target-corner.tr {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.target-corner.bl {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+.target-corner.br {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* Progress Bar */
+.cinematic-progress {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 70;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  animation: progressFill 4s ease-out forwards;
+}
+
+@keyframes progressFill {
+  to {
+    width: 100%;
+  }
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Scan Animation */
+@keyframes scan {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cinematic-name {
+    font-size: 2.5rem;
+  }
+  
+  .cinematic-title {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+  
+  .scan-text {
+    font-size: 1rem;
+  }
+  
+  .cinematic-progress {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cinematic-name {
+    font-size: 1.8rem;
+  }
+  
+  .cinematic-title {
+    font-size: 0.8rem;
+  }
+}

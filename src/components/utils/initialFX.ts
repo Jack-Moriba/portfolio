@@ -1,10 +1,12 @@
-import { SplitText } from "gsap-trial/SplitText";
+import SplitText from "gsap-trial/SplitText";
 import gsap from "gsap";
-import { smoother } from "../Navbar";
+import { smoother } from "../../context/SmootherContext";
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
-  smoother.paused(false);
+  if (smoother) {
+    smoother.paused(false);
+  }
   document.getElementsByTagName("main")[0].classList.add("main-active");
   gsap.to("body", {
     backgroundColor: "#0a0e17",
@@ -13,7 +15,7 @@ export function initialFX() {
   });
 
   var landingText = new SplitText(
-    [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
+    Array.from(document.querySelectorAll(".landing-info h3, .landing-intro h2, .landing-intro h1")),
     {
       type: "chars,lines",
       linesClass: "split-line",
@@ -35,7 +37,7 @@ export function initialFX() {
 
   let TextProps = { type: "chars,lines", linesClass: "split-h2" };
 
-  var landingText2 = new SplitText(".landing-h2-info", TextProps);
+  var landingText2 = new SplitText(document.querySelector(".landing-h2-info") as HTMLElement, TextProps);
   gsap.fromTo(
     landingText2.chars,
     { opacity: 0, y: 80, filter: "blur(5px)" },
@@ -72,8 +74,8 @@ export function initialFX() {
     }
   );
 
-  var landingText3 = new SplitText(".landing-h2-info-1", TextProps);
-  var landingText4 = new SplitText(".landing-h2-1", TextProps);
+  var landingText3 = new SplitText(document.querySelector(".landing-h2-info-1") as HTMLElement, TextProps);
+  var landingText4 = new SplitText(document.querySelector(".landing-h2-1") as HTMLElement, TextProps);
   var landingText5 = new SplitText(".landing-h2-2", TextProps);
 
   LoopText(landingText2, landingText3);

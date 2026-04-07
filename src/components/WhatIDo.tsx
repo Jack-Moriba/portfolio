@@ -28,9 +28,9 @@ const WhatIDo = () => {
     <div className="whatIDO">
       <div className="what-box">
         <h2 className="title">
-          W<span className="hat-h2">HAT</span>
+          C<span className="hat-h2">E</span>
           <div>
-            I<span className="do-h2"> DO</span>
+            Q<span className="do-h2">UE JE FAIS</span>
           </div>
         </h2>
       </div>
@@ -88,21 +88,21 @@ const WhatIDo = () => {
 
             <div className="what-content-in">
               <h3>FRONTEND</h3>
-              <h4>Building Interactive UIs</h4>
+              <h4>Interfaces Web Modernes</h4>
               <p>
-                Crafting performant, responsive interfaces with modern frameworks.
-                From SPAs to micro-frontends, I deliver pixel-perfect experiences.
+                Création d'interfaces responsive et conviviales avec Next.js, React et Bootstrap. 
+                Je me concentre sur un design épuré et des expériences utilisateur fluides 
+                pour les applications web.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Compétences & Outils</h5>
               <div className="what-content-flex">
-                <div className="what-tags">React.js</div>
-                <div className="what-tags">Angular</div>
                 <div className="what-tags">Next.js</div>
-                <div className="what-tags">TypeScript</div>
-                <div className="what-tags">JavaScript</div>
-                <div className="what-tags">Material UI</div>
+                <div className="what-tags">React</div>
+                <div className="what-tags">Bootstrap</div>
                 <div className="what-tags">HTML5</div>
                 <div className="what-tags">CSS3</div>
+                <div className="what-tags">JavaScript</div>
+                <div className="what-tags">TypeScript</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -127,21 +127,22 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
             <div className="what-content-in">
               <h3>BACKEND</h3>
-              <h4>Scalable Server Architecture</h4>
+              <h4>Développement Python & Django</h4>
               <p>
-                Designing robust APIs and microservices. From CMS platforms to
-                complex business logic, I build backends that scale.
+                Construction d'applications serveur robustes avec Django et Python. 
+                Je crée des API scalables, des systèmes de base de données et 
+                architectures backend pour plateformes numériques et applications web.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Compétences & Outils</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">NestJS</div>
-                <div className="what-tags">Express.js</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">REST APIs</div>
-                <div className="what-tags">Microservices</div>
                 <div className="what-tags">Python</div>
+                <div className="what-tags">Django</div>
+                <div className="what-tags">Java</div>
+                <div className="what-tags">PostgreSQL</div>
+                <div className="what-tags">MySQL</div>
+                <div className="what-tags">Drizzle ORM</div>
+                <div className="what-tags">REST APIs</div>
+                <div className="what-tags">Docker</div>
               </div>
               <div className="what-arrow"></div>
             </div>
