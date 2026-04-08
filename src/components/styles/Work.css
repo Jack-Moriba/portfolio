@@ -162,35 +162,106 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(94, 234, 212, 0.5);
   color: #eae5ec;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 24px;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-arrow:hover {
-  background: rgba(94, 234, 212, 0.15);
+  background: rgba(94, 234, 212, 0.2);
   border-color: var(--accentColor);
   color: var(--accentColor);
-  box-shadow: 0 0 20px rgba(94, 234, 212, 0.15);
+  box-shadow: 0 0 30px rgba(94, 234, 212, 0.4);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-arrow-left {
-  left: -70px;
+  left: -80px;
 }
 
 .carousel-arrow-right {
-  right: -70px;
+  right: -80px;
+}
+
+/* ── Project Stats - Modern & Futuristic ── */
+.project-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin: 40px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(94, 234, 212, 0.2);
+  border-radius: 20px;
+  box-shadow: 
+    0 0 40px rgba(94, 234, 212, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.stat-item::after {
+  content: '';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, var(--accentColor), transparent);
+  opacity: 0.3;
+}
+
+.stat-item:last-child::after {
+  display: none;
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, var(--accentColor) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(94, 234, 212, 0.5);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+/* Animation for stats */
+.project-stats.visible {
+  animation: statsGlow 3s ease-in-out infinite;
+}
+
+@keyframes statsGlow {
+  0%, 100% { box-shadow: 0 0 40px rgba(94, 234, 212, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.05); }
+  50% { box-shadow: 0 0 60px rgba(94, 234, 212, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.08); }
 }
 
 /* ── Dot Indicators ── */

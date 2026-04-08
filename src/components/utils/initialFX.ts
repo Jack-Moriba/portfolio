@@ -1,4 +1,3 @@
-import SplitText from "gsap/SplitText";
 import gsap from "gsap";
 import { smoother } from "../../context/SmootherContext";
 
@@ -14,15 +13,10 @@ export function initialFX() {
     delay: 1,
   });
 
-  var landingText = new SplitText(
-    Array.from(document.querySelectorAll(".landing-info h3, .landing-intro h2, .landing-intro h1")),
-    {
-      type: "chars,lines",
-      linesClass: "split-line",
-    }
-  );
+  // NOTE: SplitText animations replaced with standard GSAP
+  const landingElements = document.querySelectorAll(".landing-info h3, .landing-intro h2, .landing-intro h1");
   gsap.fromTo(
-    landingText.chars,
+    landingElements,
     { opacity: 0, y: 80, filter: "blur(5px)" },
     {
       opacity: 1,
@@ -35,19 +29,22 @@ export function initialFX() {
     }
   );
 
-  let TextProps = { type: "chars,lines", linesClass: "split-h2" };
-
-  var landingText2 = new SplitText(document.querySelector(".landing-h2-info") as HTMLElement, TextProps);
-  gsap.fromTo(
-    landingText2.chars,
-    { opacity: 0, y: 80, filter: "blur(5px)" },
-    {
-      opacity: 1,
-      duration: 1.2,
-      filter: "blur(0px)",
-      ease: "power3.inOut",
-      y: 0,
-      stagger: 0.025,
+  const landingH2 = document.querySelector(".landing-h2-info");
+  if (landingH2) {
+    gsap.fromTo(
+      landingH2,
+      { opacity: 0, y: 80, filter: "blur(5px)" },
+      {
+        opacity: 1,
+        duration: 1.2,
+        filter: "blur(0px)",
+        ease: "power3.inOut",
+        y: 0,
+        stagger: 0.025,
+        delay: 0.5,
+      }
+    );
+  }
       delay: 0.3,
     }
   );

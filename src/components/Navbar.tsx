@@ -2,28 +2,16 @@ import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { setSmoother } from "../context/SmootherContext";
 import "./styles/Navbar.css";
 
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+// NOTE: ScrollSmoother disabled - requires Club GreenSock plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
   useEffect(() => {
-    const smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
-      effects: true,
-      autoResize: true,
-      ignoreMobileResize: true,
-    });
-
-    setSmoother(smoother);
-    smoother.scrollTop(0);
-    smoother.paused(true);
-
+    // NOTE: ScrollSmoother disabled - requires Club GreenSock plugin
+    // Using native smooth scroll instead
+    
     const links = document.querySelectorAll(".header ul a");
     const handleClick = (e: Event) => {
       if (window.innerWidth > 1024) {
@@ -31,7 +19,10 @@ const Navbar = () => {
         const target = e.currentTarget as HTMLAnchorElement;
         const section = target.getAttribute("data-href");
         if (section) {
-          smoother.scrollTo(section, true, "top top");
+          const element = document.querySelector(section);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
         }
       }
     };
@@ -40,17 +31,10 @@ const Navbar = () => {
       elem.addEventListener("click", handleClick);
     });
 
-    const handleResize = () => {
-      ScrollSmoother.refresh(true);
-    };
-
-    window.addEventListener("resize", handleResize);
-
     return () => {
       links.forEach((elem) => {
         elem.removeEventListener("click", handleClick);
       });
-      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (

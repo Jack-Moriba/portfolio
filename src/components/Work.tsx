@@ -215,7 +215,10 @@ const Work = () => {
 
           {/* Carousel Container */}
           <div className="carousel-container">
-            <div className="carousel-track">
+            <div 
+              className="carousel-track"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
               {filteredProjects.map((project, index) => (
                 <div
                   key={index}

@@ -1,5 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { AvatarMarie, AvatarPasteur, AvatarAissatou } from "./TestimonialAvatars";
+import { FaQuoteLeft, FaQuoteRight, FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import "./styles/Testimonials.css";
+
+const avatarComponents = [AvatarMarie, AvatarPasteur, AvatarAissatou];
+
+interface Testimonial {
+  name: string;
+  role: string;
+  text: string;
+  rating: number;
+  project: string;
+  AvatarComponent: () => JSX.Element;
+}
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
