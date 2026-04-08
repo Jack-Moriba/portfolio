@@ -56,10 +56,11 @@ a.contact-social {
 .contact-box h5 {
   font-size: 20px;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 1.5;
   display: flex;
   gap: 10px;
   opacity: 0.5;
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 1600px) {
