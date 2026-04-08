@@ -19,6 +19,7 @@ import Toast from "./Toast";
 const TechStack = lazy(() => import("./TechStack"));
 const Services = lazy(() => import("./Services"));
 const Testimonials = lazy(() => import("./Testimonials"));
+const Certifications = lazy(() => import("./Certifications"));
 const CinematicIntro = lazy(() => import("./CinematicIntro"));
 const AnalyticsDashboard = lazy(() => import("./AnalyticsDashboard"));
 const EasterEggGame = lazy(() => import("./EasterEggGame"));
@@ -68,6 +69,9 @@ const MainContainer = ({ children }: PropsWithChildren) => {
                 <WhatIDo />
                 <Career />
                 <Work />
+                <Suspense fallback={<div role="status" aria-label="Chargement des certifications">Loading...</div>}>
+                  <Certifications />
+                </Suspense>
                 <Suspense fallback={<div role="status" aria-label="Chargement des services">Loading...</div>}>
                   <Services />
                 </Suspense>
