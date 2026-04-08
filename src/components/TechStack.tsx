@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import {
   SiPython, SiDjango, SiJavascript, SiReact, SiNextdotjs, SiNodedotjs,
   SiTypescript, SiPostgresql, SiMongodb, SiDocker, SiGit, SiLinux,
-  SiFigma, SiAdobeillustrator
+  SiFigma
 } from "react-icons/si";
-import { FaDatabase, FaServer, FaNetworkWired } from "react-icons/fa";
+import { FaDatabase, FaServer, FaNetworkWired, FaPaintBrush } from "react-icons/fa";
 import "./styles/TechStack.css";
 
 const TechStack = () => {
@@ -62,7 +62,7 @@ const TechStack = () => {
       icon: <SiFigma />,
       technologies: [
         { name: "Figma", icon: <SiFigma />, level: 88, color: "#F24E1E", desc: "Design UI/UX" },
-        { name: "Adobe", icon: <SiAdobeillustrator />, level: 75, color: "#FF9A00", desc: "Illustration" },
+        { name: "Design", icon: <FaPaintBrush />, level: 75, color: "#FF9A00", desc: "Illustration" },
         { name: "Database", icon: <FaDatabase />, level: 80, color: "#4FC3F7", desc: "SQL & NoSQL" },
         { name: "Network", icon: <FaNetworkWired />, level: 72, color: "#00BCD4", desc: "Réseaux" },
       ]
