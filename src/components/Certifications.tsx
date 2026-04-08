@@ -40,7 +40,7 @@ const Certifications = () => {
       id: "cisco-ite",
       title: "Cisco IT Essentials",
       issuer: "Cisco Networking Academy",
-      date: "2025",
+      date: "2021",
       description: "Fondamentaux des systèmes informatiques, hardware, software et dépannage. Certification officielle Cisco reconnue mondialement.",
       icon: <SiCisco />,
       color: "#049fd9",
@@ -51,7 +51,7 @@ const Certifications = () => {
       id: "cisco-ccna1",
       title: "Cisco CCNA 1",
       issuer: "Cisco Networking Academy",
-      date: "2025",
+      date: "2022",
       description: "Introduction aux réseaux, concepts fondamentaux de networking, modèle OSI, adressage IP et configuration de base.",
       icon: <SiCisco />,
       color: "#049fd9",
@@ -62,7 +62,7 @@ const Certifications = () => {
       id: "cisco-ccna2",
       title: "Cisco CCNA 2",
       issuer: "Cisco Networking Academy",
-      date: "2025",
+      date: "2023",
       description: "Configuration avancée des routeurs et switchs, routage, VLANs, sécurité réseau et troubleshooting.",
       icon: <SiCisco />,
       color: "#049fd9",
@@ -164,8 +164,8 @@ const Certifications = () => {
             <span className="stat-label">Certifications Cisco</span>
           </div>
           <div className="stat-item">
-            <span className="stat-value">2025</span>
-            <span className="stat-label">Année d'obtention</span>
+            <span className="stat-value">2021-23</span>
+            <span className="stat-label">Période d'obtention</span>
           </div>
           <div className="stat-item">
             <span className="stat-value">Cisco</span>
