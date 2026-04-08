@@ -85,9 +85,10 @@
 .career-info-in {
   display: flex;
   width: 45%;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
-  gap: 30px;
+  gap: 15px;
 }
 
 .career-role {
@@ -97,10 +98,11 @@
 }
 
 .career-info h3 {
-  font-size: 36px;
+  font-size: 20px;
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2;
+  color: #14b8a6;
   white-space: nowrap;
 }
 
@@ -211,7 +213,7 @@
   }
 
   .career-info h3 {
-    font-size: 32px;
+    font-size: 18px;
   }
 
   .career-details p {
@@ -266,7 +268,7 @@
   }
 
   .career-info h3 {
-    font-size: 28px;
+    font-size: 16px;
   }
 }
 
@@ -292,7 +294,7 @@
   }
 
   .career-info h3 {
-    font-size: 24px;
+    font-size: 14px;
   }
 
   .career-info h4 {
