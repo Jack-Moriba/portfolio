@@ -1,70 +1,423 @@
-.techstack-section {
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  color: white;
-  text-align: center;
+/* ── Tech Stack Modern - Bento Grid + Glassmorphism Orbs ── */
+
+.techstack-modern {
   min-height: 100vh;
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #0a0f1a 0%, #141b2d 50%, #0f172a 100%);
   position: relative;
+  overflow: hidden;
 }
 
-.techstack-section::before {
+.techstack-modern::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.3;
+  background:
+    radial-gradient(circle at 15% 85%, rgba(94, 234, 212, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.03) 0%, transparent 50%);
+  pointer-events: none;
 }
 
-.techstack-title {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ffffff, #e8f4fd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.techstack-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
-  opacity: 0.95;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  z-index: 2;
-  line-height: 1.6;
-}
-
-.techstack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.techstack-container {
   max-width: 1400px;
   margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
-.techstack-grid.visible {
+/* ── Header ── */
+.techstack-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.techstack-header.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.tech-category {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(15px);
+.techstack-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.techstack-title .gradient {
+  background: linear-gradient(135deg, #5eead4 0%, #8b5cf6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.techstack-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Bento Grid ── */
+.techstack-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.techstack-bento.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Bento Cards ── */
+.bento-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.bento-card.featured {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(94, 234, 212, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(94, 234, 212, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.bento-card.hovered {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(94, 234, 212, 0.3);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(94, 234, 212, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-icon {
+  font-size: 1.75rem;
+  opacity: 0.9;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ── Tech Orbs Grid ── */
+.tech-orbs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Tech Orb (Glassmorphism Orb) ── */
+.tech-orb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: orb-enter 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes orb-enter {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tech-orb:hover {
+  transform: scale(1.1);
+}
+
+.tech-orb.active {
+  transform: scale(1.15);
+}
+
+/* Orb Ring (Progress Ring) */
+.orb-ring {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-ring {
+  transition: stroke-dasharray 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Orb Content */
+.orb-content {
+  font-size: 2.5rem;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.tech-orb:hover .orb-content,
+.tech-orb.active .orb-content {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+/* Orb Glow */
+.orb-glow {
+  position: absolute;
+  inset: -10%;
+  border-radius: 50%;
+  filter: blur(20px);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tech-orb:hover .orb-glow,
+.tech-orb.active .orb-glow {
+  opacity: 0.6;
+}
+
+/* Orb Info Popup */
+.orb-info {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.orb-info.visible {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.orb-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.orb-level {
+  font-size: 1.1rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #5eead4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.orb-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── Card Footer ── */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tech-count {
+  font-weight: 500;
+}
+
+.avg-level {
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.2), rgba(139, 92, 246, 0.2));
+  padding: 0.25rem 0.75rem;
   border-radius: 20px;
+  border: 1px solid rgba(94, 234, 212, 0.2);
+  color: #5eead4;
+  font-weight: 600;
+}
+
+/* ── Summary Stats ── */
+.techstack-summary {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+
+.techstack-summary.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(94, 234, 212, 0.15);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.summary-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(94, 234, 212, 0.3);
+  box-shadow: 0 10px 40px rgba(94, 234, 212, 0.1);
+}
+
+.summary-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #5eead4 0%, #8b5cf6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.summary-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+  .techstack-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .techstack-modern {
+    padding: 4rem 1rem;
+  }
+
+  .techstack-bento {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .techstack-title {
+    font-size: 2rem;
+  }
+
+  .bento-card {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .tech-orbs-grid {
+    gap: 1rem;
+  }
+
+  .orb-content {
+    font-size: 2rem;
+  }
+
+  .techstack-summary {
+    gap: 1rem;
+  }
+
+  .summary-item {
+    padding: 1rem 1.5rem;
+  }
+
+  .summary-number {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .orb-info {
+    position: fixed;
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  .orb-info.visible {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
   padding: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.25);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);

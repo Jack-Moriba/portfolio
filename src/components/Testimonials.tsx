@@ -1,18 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { AvatarMarie, AvatarPasteur, AvatarAissatou } from "./TestimonialAvatars";
 import { FaQuoteLeft, FaQuoteRight, FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import "./styles/Testimonials.css";
-
-const avatarComponents = [AvatarMarie, AvatarPasteur, AvatarAissatou];
-
-interface Testimonial {
-  name: string;
-  role: string;
-  text: string;
-  rating: number;
-  project: string;
-  AvatarComponent: () => JSX.Element;
-}
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -32,30 +21,39 @@ const Testimonials = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const testimonials = [
+  interface Testimonial {
+    name: string;
+    role: string;
+    text: string;
+    rating: number;
+    project: string;
+    AvatarComponent: () => JSX.Element;
+  }
+
+  const testimonials: Testimonial[] = [
     {
       name: "Marie Konaté",
       role: "CEO, Tech Innovation Guinée",
-      avatar: "/avatars/marie.jpg",
       text: "Jacques a transformé notre vision en réalité. Son expertise en développement full-stack et sa compréhension du contexte africain ont été déterminants pour le succès de notre plateforme NOUS.",
       rating: 5,
-      project: "NOUS Platform"
+      project: "NOUS Platform",
+      AvatarComponent: AvatarMarie,
     },
     {
       name: "Pasteur Jean Doumbouya",
       role: "Responsable Communautaire, Église Protestante",
-      avatar: "/avatars/pasteur.jpg",
       text: "Un talent exceptionnel ! Jacques a créé un écosystème numérique complet pour notre communauté. Sa passion et sa foi se reflètent dans chaque ligne de code.",
       rating: 5,
-      project: "HOLY Ecosystem"
+      project: "HOLY Ecosystem",
+      AvatarComponent: AvatarPasteur,
     },
     {
       name: "Aïssatou Bah",
       role: "Directrice Marketing, Startup Conakry",
-      avatar: "/avatars/aissatou.jpg",
       text: "Professionalisme, créativité et fiabilité. Jacques a livré notre site e-commerce dans les délais avec des fonctionnalités avancées qui ont boosté nos ventes de 300%.",
       rating: 5,
-      project: "E-Commerce Platform"
+      project: "E-Commerce Platform",
+      AvatarComponent: AvatarAissatou,
     }
   ];
 
@@ -68,9 +66,11 @@ const Testimonials = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextTestimonial, 8000);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
     return () => clearInterval(interval);
-  }, []);
+  }, [testimonials.length]);
 
   return (
     <div className="testimonials-section" id="testimonials">
@@ -91,7 +91,7 @@ const Testimonials = () => {
               >
                 <div className="testimonial-header">
                   <div className="testimonial-avatar">
-                    <img src={testimonial.avatar} alt={testimonial.name} />
+                    <testimonial.AvatarComponent />
                   </div>
                   <div className="testimonial-info">
                     <h4 className="testimonial-name">{testimonial.name}</h4>
@@ -104,18 +104,22 @@ const Testimonials = () => {
 
                 <div className="testimonial-rating">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="star">⭐</span>
+                    <FaStar key={i} className="star-icon" />
                   ))}
                 </div>
 
-                <p className="testimonial-text">"{testimonial.text}"</p>
+                <p className="testimonial-text">
+                  <FaQuoteLeft className="quote-left" />
+                  {testimonial.text}
+                  <FaQuoteRight className="quote-right" />
+                </p>
               </div>
             ))}
           </div>
 
           <div className="testimonial-controls">
-            <button className="testimonial-btn prev" onClick={prevTestimonial}>
-              ←
+            <button className="testimonial-btn prev" onClick={prevTestimonial} aria-label="Précédent">
+              <FaChevronLeft />
             </button>
             <div className="testimonial-dots">
               {testimonials.map((_, index) => (
@@ -126,8 +130,8 @@ const Testimonials = () => {
                 />
               ))}
             </div>
-            <button className="testimonial-btn next" onClick={nextTestimonial}>
-              →
+            <button className="testimonial-btn next" onClick={nextTestimonial} aria-label="Suivant">
+              <FaChevronRight />
             </button>
           </div>
         </div>
