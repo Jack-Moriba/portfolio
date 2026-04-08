@@ -14,6 +14,12 @@ const Contact = () => {
                 theajamesmoriba@gmail.com
               </a>
             </p>
+            <h4>WhatsApp</h4>
+            <p>
+              <a href="https://wa.me/224622599507" target="_blank" rel="noopener noreferrer" data-cursor="disable">
+                +224 622 599 507
+              </a>
+            </p>
             <h4>Formation</h4>
             <p>Étudiant en Ingénierie Logicielle à l'Université Nongo Conakry (UNC)</p>
           </div>
