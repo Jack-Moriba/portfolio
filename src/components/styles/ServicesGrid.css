@@ -1,0 +1,408 @@
+/* ==========================================================================
+   SERVICES GRID - Grille de services avec animations 3D
+   ========================================================================== */
+
+.services-section {
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #0a0e17 0%, #0d1117 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   BACKGROUND EFFECTS
+   ========================================================================== */
+
+.services-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 70%);
+}
+
+.bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.services-header {
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.services-subtitle {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #14b8a6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.services-title {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.services-description {
+  font-size: 18px;
+  color: #94a3b8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   SERVICES GRID
+   ========================================================================== */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card-wrapper {
+  perspective: 1000px;
+}
+
+/* ==========================================================================
+   SERVICE CARD
+   ========================================================================== */
+
+.service-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 32px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon Container */
+
+.service-icon-container {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.service-icon {
+  font-size: 32px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.icon-pulse-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 24px;
+  border: 2px solid;
+  opacity: 0;
+  animation: icon-pulse 2s ease-in-out infinite;
+}
+
+.service-card:hover .icon-pulse-ring {
+  opacity: 0.5;
+}
+
+@keyframes icon-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+/* Header */
+
+.service-header {
+  margin-bottom: 16px;
+}
+
+.service-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.service-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Description */
+
+.service-description {
+  font-size: 15px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+/* Features List */
+
+.service-features {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.service-features.expanded {
+  max-height: 200px;
+}
+
+.service-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.service-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #e2e8f0;
+}
+
+.service-features li svg {
+  font-size: 12px;
+}
+
+/* CTA */
+
+.service-cta {
+  margin-top: auto;
+}
+
+.service-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 24px;
+  border: 2px solid;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  background: transparent;
+}
+
+.service-btn svg {
+  transition: transform 0.3s ease;
+}
+
+/* Corner accent */
+
+.service-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover .service-corner {
+  opacity: 0.6;
+}
+
+/* Glow effect */
+
+.service-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  border-radius: 24px;
+}
+
+/* ==========================================================================
+   BOTTOM CTA
+   ========================================================================== */
+
+.services-bottom {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-card {
+  text-align: center;
+  padding: 50px 60px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 128, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  max-width: 600px;
+}
+
+.bottom-card h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.bottom-card p {
+  font-size: 16px;
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+.bottom-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #00d4ff, #ff0080);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+}
+
+.bottom-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-section {
+    padding: 80px 16px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .service-card {
+    padding: 24px;
+  }
+
+  .service-icon-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .service-icon {
+    font-size: 28px;
+  }
+
+  .bottom-card {
+    padding: 40px 30px;
+  }
+
+  .bottom-card h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    gap: 20px;
+  }
+
+  .service-title {
+    font-size: 20px;
+  }
+
+  .service-description {
+    font-size: 14px;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-pulse-ring {
+    animation: none;
+  }
+  
+  .service-card,
+  .service-icon,
+  .service-btn,
+  .service-features {
+    transition: none;
+  }
+}

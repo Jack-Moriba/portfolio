@@ -68,12 +68,19 @@ const FuturisticNav = () => {
       {/* Navigation Desktop */}
       <nav className="futuristic-nav">
         <div className="nav-container">
-          {/* Logo holographique */}
+          {/* Photo de profil */}
           <div className="nav-logo">
-            <div className="logo-hologram">
-              <span className="logo-text">JMT</span>
-              <div className="logo-ring"></div>
-              <div className="logo-pulse"></div>
+            <div className="nav-profile-circle">
+              <img
+                src="/images/profil.jpg"
+                alt="Jacques Moriba Thea"
+                className="nav-profile-img"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/images/placeholder.webp';
+                }}
+              />
+              <div className="nav-profile-ring"></div>
+              <div className="nav-profile-pulse"></div>
             </div>
           </div>
 

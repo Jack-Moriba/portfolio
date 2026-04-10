@@ -76,7 +76,6 @@ const About3DEnhanced = () => {
             <ProfileCard3D
               name="Jacques Moriba"
               role="Full Stack Developer & Software Engineer"
-              avatarUrl="/images/avatar.png"
               stats={{
                 projects: 15,
                 experience: '3+ ans',

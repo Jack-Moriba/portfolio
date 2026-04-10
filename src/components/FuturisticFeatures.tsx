@@ -43,7 +43,7 @@ const FuturisticFeatures = () => {
         onClick={toggleFuturisticMode}
         data-cursor="disable"
       >
-        {isFuturisticMode ? '🚀 Mode Futuriste ON' : '🔧 Mode Classique'}
+        {isFuturisticMode ? '🚀 Mode Futuriste ON' : '� Activer Mode Futuriste'}
       </button>
 
       {/* Futuristic Components */}
@@ -105,10 +105,12 @@ const FuturisticFeatures = () => {
       )}
 
       {/* Status Indicator */}
-      <div className="status-indicator">
-        <div className={`status-dot ${isFuturisticMode ? 'active' : ''}`}></div>
-        <span>Mode {isFuturisticMode ? 'Futuriste' : 'Classique'}</span>
-      </div>
+      {isFuturisticMode && (
+        <div className="status-indicator">
+          <div className="status-dot active"></div>
+          <span>Mode Futuriste Actif</span>
+        </div>
+      )}
     </div>
   );
 };

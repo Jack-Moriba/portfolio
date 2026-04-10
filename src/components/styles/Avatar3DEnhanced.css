@@ -1,0 +1,413 @@
+/* ==========================================================================
+   AVATAR 3D ENHANCED - Animations avancées pour l'avatar
+   ========================================================================== */
+
+/* Container principal */
+.avatar-3d-wrapper {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.avatar-3d-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ==========================================================================
+   AVATAR SVG ANIMÉ AVEC YEUX INTERACTIFS
+   ========================================================================== */
+
+.avatar-svg-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  transform-style: preserve-3d;
+}
+
+.avatar-svg {
+  width: 100%;
+  height: 100%;
+  animation: avatar-breathe 4s ease-in-out infinite;
+}
+
+@keyframes avatar-breathe {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.02) translateY(-2px);
+  }
+}
+
+/* Halo tournant autour de l'avatar */
+.avatar-halo-orbit {
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.6) 20%,
+    rgba(255, 0, 128, 0.6) 40%,
+    rgba(20, 184, 166, 0.6) 60%,
+    rgba(0, 212, 255, 0.6) 80%,
+    transparent 100%
+  );
+  animation: halo-spin 8s linear infinite;
+  opacity: 0.6;
+  filter: blur(8px);
+}
+
+@keyframes halo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Bordure pulsante */
+.avatar-glow-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #0a0e17, #0a0e17) padding-box,
+              linear-gradient(135deg, #00d4ff, #ff0080, #14b8a6) border-box;
+  animation: avatar-pulse-ring 2s ease-in-out infinite;
+}
+
+@keyframes avatar-pulse-ring {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Badge statut amélioré */
+.avatar-status-badge {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  background: #14b8a6;
+  border-radius: 50%;
+  border: 3px solid #0a0e17;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: status-blink 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes status-blink {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(20, 184, 166, 0);
+  }
+}
+
+.avatar-status-icon {
+  font-size: 10px;
+}
+
+/* ==========================================================================
+   ANIMATION DE TYPING POUR LE RÔLE
+   ========================================================================== */
+
+.role-typing {
+  display: inline-block;
+  position: relative;
+  min-height: 1.2em;
+}
+
+.role-typing::after {
+  content: '|';
+  animation: cursor-blink 1s step-end infinite;
+  color: #00d4ff;
+  margin-left: 2px;
+}
+
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   STATS AVEC ANIMATION DE COMPTAGE
+   ========================================================================== */
+
+.stats-3d {
+  display: flex;
+  justify-content: space-around;
+  margin: 24px 0;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-3d {
+  text-align: center;
+  position: relative;
+}
+
+.stat-3d::after {
+  content: '';
+  position: absolute;
+  right: -50%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-3d:last-child::after {
+  display: none;
+}
+
+.stat-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #00d4ff, #ff0080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: stat-glow 3s ease-in-out infinite;
+}
+
+@keyframes stat-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(0, 212, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 0, 128, 0.5));
+  }
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   BOUTONS AVEC HOVER 3D
+   ========================================================================== */
+
+.actions-3d {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-3d {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-3d::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn-3d:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-3d:hover {
+  transform: translateY(-3px) translateZ(20px);
+}
+
+.btn-3d:active {
+  transform: translateY(-1px) translateZ(10px);
+}
+
+.btn-3d-primary {
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  color: #0a0e17;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.btn-3d-primary:hover {
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+}
+
+.btn-3d-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-3d-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   PARTICULES FLottantes AMÉLIORÉES
+   ========================================================================== */
+
+.particles-container {
+  position: absolute;
+  inset: -50px;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.particle-3d {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-float 5s ease-in-out infinite;
+}
+
+.particle-3d:nth-child(1) {
+  background: #00d4ff;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.particle-3d:nth-child(2) {
+  background: #ff0080;
+  left: 30%;
+  animation-delay: 0.5s;
+}
+
+.particle-3d:nth-child(3) {
+  background: #14b8a6;
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.particle-3d:nth-child(4) {
+  background: #f59e0b;
+  left: 70%;
+  animation-delay: 1.5s;
+}
+
+.particle-3d:nth-child(5) {
+  background: #00d4ff;
+  left: 90%;
+  animation-delay: 2s;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100%) translateX(0) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(75%) translateX(10px) scale(0.5) rotate(90deg);
+  }
+  50% {
+    transform: translateY(50%) translateX(-5px) scale(1) rotate(180deg);
+  }
+  75% {
+    transform: translateY(25%) translateX(15px) scale(0.8) rotate(270deg);
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20%) translateX(0) scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .avatar-svg-container {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .stats-3d {
+    padding: 12px;
+  }
+  
+  .stat-value {
+    font-size: 24px;
+  }
+  
+  .stat-label {
+    font-size: 10px;
+  }
+  
+  .actions-3d {
+    flex-direction: column;
+  }
+  
+  .btn-3d {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-svg-container {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-svg,
+  .avatar-halo-orbit,
+  .avatar-glow-ring,
+  .avatar-status-badge,
+  .role-typing::after,
+  .stat-value,
+  .particle-3d {
+    animation: none;
+  }
+}

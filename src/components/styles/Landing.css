@@ -196,6 +196,8 @@
    font-weight: 200; 
 } */
 
+/* Note: .landing-info est remplacé par .landing-info-modern */
+/* Les anciens styles sont gardés pour compatibilité si besoin */
 .landing-info {
   position: absolute;
   right: 50%;
@@ -203,6 +205,8 @@
   bottom: 40px;
   top: inherit;
   z-index: 9;
+  /* Masquer par défaut si le nouveau design est utilisé */
+  display: none;
 }
 
 .landing-info h3 {
@@ -260,6 +264,191 @@ h2.landing-info-h2 {
       rgba(0, 0, 0, 0) 110%);
   top: 0;
   left: 0;
+}
+
+/* ==========================================================================
+   MODERN LANDING INFO - NOUVEAU DESIGN
+   ========================================================================== */
+
+.gradient-name {
+  background: linear-gradient(135deg, #00d4ff 0%, #ff0080 50%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.landing-info-modern {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 80px;
+  z-index: 9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #10b981;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.student-title {
+  font-size: 18px;
+  letter-spacing: 3px;
+  font-weight: 300;
+  color: var(--accentColor);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.typing-container {
+  font-family: "Geist", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing-text {
+  background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.typing-cursor {
+  color: #00d4ff;
+  animation: cursor-blink 1s step-end infinite;
+  margin-left: 4px;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.skills-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.skill-tag {
+  padding: 6px 14px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #00d4ff;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(0, 212, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive pour le nouveau design */
+@media screen and (min-width: 500px) {
+  .landing-info-modern {
+    bottom: 100px;
+  }
+  
+  .typing-container {
+    font-size: 38px;
+  }
+  
+  .student-title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .landing-info-modern {
+    bottom: 120px;
+  }
+  
+  .typing-container {
+    font-size: 48px;
+  }
+  
+  .student-title {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .landing-info-modern {
+    bottom: auto;
+    top: 51%;
+    right: auto;
+    left: 66%;
+    transform: translate(0%, -50%);
+    text-align: left;
+    align-items: flex-start;
+  }
+  
+  .typing-container {
+    font-size: 55px;
+    justify-content: flex-start;
+  }
+  
+  .skills-tags {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .landing-info-modern {
+    left: 70%;
+  }
+  
+  .typing-container {
+    font-size: 65px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .typing-container {
+    font-size: 75px;
+  }
+  
+  .student-title {
+    font-size: 25px;
+  }
 }
 
 @media screen and (min-width: 500px) {

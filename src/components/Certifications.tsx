@@ -37,6 +37,17 @@ const Certifications = () => {
 
   const certificates: Certificate[] = [
     {
+      id: "bej-agency-stage",
+      title: "Certificat de Stage - Graphic Designer",
+      issuer: "BEJ Agency SARL",
+      date: "Juillet - Septembre 2025",
+      description: "Stage de 3 mois en Design Graphique. Conception visuelle, branding et supports de communication. Délivré par Mme Koné Esther, Fondatrice & Directrice de la Communication.",
+      icon: <FaCertificate />,
+      color: "#d4af37", // Or doré
+      verifyUrl: "#",
+      skills: ["Design Graphique", "Branding", "Communication", "Adobe Suite", "Canva Pro"]
+    },
+    {
       id: "cisco-ite",
       title: "Cisco IT Essentials",
       issuer: "Cisco Networking Academy",

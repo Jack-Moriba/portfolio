@@ -1,6 +1,5 @@
 import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
 import About from "./About";
-import Career from "./Career";
 import Contact from "./Contact";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
@@ -19,18 +18,23 @@ import Lenis from "lenis";
 
 // Lazy load heavy components
 const TechStack = lazy(() => import("./TechStack"));
-const Services = lazy(() => import("./Services"));
-const Testimonials = lazy(() => import("./Testimonials"));
 const Certifications = lazy(() => import("./Certifications"));
 const CinematicIntro = lazy(() => import("./CinematicIntro"));
-const AnalyticsDashboard = lazy(() => import("./AnalyticsDashboard"));
 const EasterEggGame = lazy(() => import("./EasterEggGame"));
 
-interface MainContainerProps extends PropsWithChildren {
-  onOpenGuineaPay?: () => void;
-}
+// NOUVEAUX: Composants modernes avec animations 3D
+const CareerTimeline = lazy(() => import("./CareerTimeline"));
+const ProjectsShowcase = lazy(() => import("./ProjectsShowcase"));
+const ServicesGrid = lazy(() => import("./ServicesGrid"));
+const TestimonialsCarousel = lazy(() => import("./TestimonialsCarousel"));
+const MyDesigns = lazy(() => import("./MyDesigns"));
 
-const MainContainer = ({ children, onOpenGuineaPay }: MainContainerProps) => {
+// OPTIONAL: 3D Tilt Components (décommentez pour activer)
+// const About3DEnhanced = lazy(() => import("./About3DEnhanced"));
+// const TiltCard3D = lazy(() => import("./TiltCard3D"));
+// const ProfileCard3D = lazy(() => import("./ProfileCard3D"));
+
+const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 1024
   );
@@ -84,12 +88,11 @@ const MainContainer = ({ children, onOpenGuineaPay }: MainContainerProps) => {
         <div className="container-main" role="document">
           <Cursor />
           <header role="banner">
-            <Navbar onOpenGuineaPay={onOpenGuineaPay} />
+            <Navbar />
           </header>
           <SocialIcons />
           <FuturisticFeatures />
           <Suspense fallback={null}>
-            <AnalyticsDashboard />
             <EasterEggGame />
           </Suspense>
           {isDesktopView && children}
@@ -97,24 +100,76 @@ const MainContainer = ({ children, onOpenGuineaPay }: MainContainerProps) => {
             <div id="smooth-content">
               <main className="container-main" id="main-content" role="main">
                 <Landing>{!isDesktopView && children}</Landing>
+                
+                {/* 
+                  OPTION: Composants 3D Enhanced
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <About3DEnhanced />
+                  </Suspense>
+                */}
                 <About />
                 <WhatIDo />
-                <Career />
+                
+                {/* 
+                  NOUVEAU: CareerTimeline moderne avec animations scroll 3D
+                  (remplace le composant Career existant)
+                */}
+                <Suspense fallback={<div role="status" aria-label="Chargement du parcours">Loading...</div>}>
+                  <CareerTimeline />
+                </Suspense>
+                
+                {/* Garder le Career original pour référence */}
+                {/* <Career /> */}
+                
                 <Work />
+                
+                {/* 
+                  NOUVEAU: ProjectsShowcase avec filtres et hover effects 3D
+                */}
+                <Suspense fallback={<div role="status" aria-label="Chargement des projets">Loading...</div>}>
+                  <ProjectsShowcase />
+                </Suspense>
+                
                 <Suspense fallback={<div role="status" aria-label="Chargement des certifications">Loading...</div>}>
                   <Certifications />
                 </Suspense>
+                
+                {/* 
+                  NOUVEAU: ServicesGrid avec animations 3D
+                  (alternative au composant Services existant)
+                */}
                 <Suspense fallback={<div role="status" aria-label="Chargement des services">Loading...</div>}>
-                  <Services />
+                  <ServicesGrid />
                 </Suspense>
+                
+                {/* Garder Services original pour référence */}
+                {/* <Services /> */}
+                
+                {/* 
+                  NOUVEAU: TestimonialsCarousel 3D avec carousel
+                  (alternative au composant Testimonials existant)
+                */}
                 <Suspense fallback={<div role="status" aria-label="Chargement des témoignages">Loading...</div>}>
-                  <Testimonials />
+                  <TestimonialsCarousel />
                 </Suspense>
+                
+                {/* Garder Testimonials original pour référence */}
+                {/* <Testimonials /> */}
+                
                 {isDesktopView && (
                   <Suspense fallback={<div role="status" aria-label="Chargement des technologies">Loading....</div>}>
                     <TechStack />
                   </Suspense>
                 )}
+                
+                {/* 
+                  NOUVEAU: MyDesigns - Galerie complète de designs
+                  Section dédiée pour affiches, flyers et branding
+                */}
+                <Suspense fallback={<div role="status" aria-label="Chargement des designs">Loading...</div>}>
+                  <MyDesigns />
+                </Suspense>
+                
                 <Contact />
               </main>
             </div>

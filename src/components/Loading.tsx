@@ -45,8 +45,17 @@ const Loading = ({ percent }: { percent: number }) => {
   return (
     <>
       <div className="loading-header">
-        <a href="/#" className="loader-title" data-cursor="disable">
-          JMT
+        <a href="/#" className="loader-profile-link" data-cursor="disable">
+          <div className="loader-profile-circle">
+            <img
+              src="/images/profil.jpg"
+              alt="Jacques Moriba Thea"
+              className="loader-profile-img"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/images/placeholder.webp';
+              }}
+            />
+          </div>
         </a>
         <div className={`loaderGame ${clicked && "loader-out"}`}>
           <div className="loaderGame-container">

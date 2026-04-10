@@ -1,0 +1,348 @@
+/* ==========================================================================
+   PHOTO 3D - Composant photo avec effets 3D
+   ========================================================================== */
+
+.photo-3d-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+}
+
+.photo-3d-container.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ==========================================================================
+   HALO GLOW ANIMÉ
+   ========================================================================== */
+
+.photo-3d-halo {
+  position: absolute;
+  inset: -20px;
+  border-radius: 32px;
+  background: conic-gradient(
+    from 0deg,
+    #00d4ff,
+    #ff0080,
+    #14b8a6,
+    #00d4ff
+  );
+  opacity: 0.4;
+  filter: blur(20px);
+  animation: photo-halo-rotate 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes photo-halo-rotate {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* ==========================================================================
+   BORDURE GRADIENT ANIMÉE
+   ========================================================================== */
+
+.photo-3d-border {
+  position: absolute;
+  inset: -2px;
+  border-radius: 26px;
+  background: conic-gradient(
+    from 0deg,
+    #00d4ff,
+    #ff0080,
+    #14b8a6,
+    #f59e0b,
+    #00d4ff
+  );
+  z-index: 0;
+  animation: photo-border-rotate 6s linear infinite;
+}
+
+@keyframes photo-border-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   WRAPPER IMAGE
+   ========================================================================== */
+
+.photo-3d-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(10, 14, 23, 0.8);
+  z-index: 1;
+}
+
+.photo-3d-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transform-style: preserve-3d;
+  transition: filter 0.3s ease;
+}
+
+/* ==========================================================================
+   GLARE EFFECT (REFLET DYNAMIQUE)
+   ========================================================================== */
+
+.photo-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  transform: translateZ(1px);
+}
+
+.photo-3d-glare.active {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   OVERLAY GRADIENT
+   ========================================================================== */
+
+.photo-3d-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    transparent 60%,
+    rgba(10, 14, 23, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   BADGE STATUT
+   ========================================================================== */
+
+.photo-3d-badge {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(10, 14, 23, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 10;
+  transform: translateZ(30px);
+  animation: photo-badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes photo-badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 212, 255, 0);
+  }
+}
+
+.photo-3d-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #14b8a6;
+  animation: photo-dot-blink 1.5s ease-in-out infinite;
+}
+
+@keyframes photo-dot-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.photo-3d-badge-text {
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   PARTICULES FLOTTANTES
+   ========================================================================== */
+
+.photo-3d-particles {
+  position: absolute;
+  inset: -40px;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.photo-3d-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00d4ff;
+  opacity: 0;
+  animation: photo-particle-float 4s ease-in-out infinite;
+}
+
+@keyframes photo-particle-float {
+  0% {
+    transform: translateY(100%) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   VARIANTES DE TAILLE
+   ========================================================================== */
+
+.photo-3d-container.small {
+  max-width: 250px;
+}
+
+.photo-3d-container.large {
+  max-width: 500px;
+}
+
+.photo-3d-container.round {
+  border-radius: 50%;
+}
+
+.photo-3d-container.round .photo-3d-wrapper,
+.photo-3d-container.round .photo-3d-image,
+.photo-3d-container.round .photo-3d-glare,
+.photo-3d-container.round .photo-3d-overlay {
+  border-radius: 50%;
+}
+
+.photo-3d-container.round .photo-3d-border {
+  border-radius: 50%;
+  inset: -3px;
+}
+
+.photo-3d-container.round .photo-3d-halo {
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   ÉTATS INTERACTIFS
+   ========================================================================== */
+
+.photo-3d-container:hover .photo-3d-image {
+  filter: brightness(1.05) contrast(1.02);
+}
+
+.photo-3d-container:hover .photo-3d-halo {
+  animation-duration: 2s;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .photo-3d-container {
+    max-width: 300px;
+  }
+  
+  .photo-3d-halo {
+    inset: -15px;
+    filter: blur(15px);
+  }
+  
+  .photo-3d-badge {
+    bottom: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-3d-container {
+    max-width: 250px;
+  }
+  
+  .photo-3d-halo {
+    inset: -10px;
+    filter: blur(10px);
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-3d-halo,
+  .photo-3d-border,
+  .photo-3d-particle,
+  .photo-3d-badge,
+  .photo-3d-badge-dot {
+    animation: none;
+  }
+  
+  .photo-3d-container {
+    transition: opacity 0.3s ease;
+  }
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+  .photo-3d-border {
+    background: #fff;
+  }
+  
+  .photo-3d-badge {
+    border-width: 2px;
+    background: #000;
+  }
+}
