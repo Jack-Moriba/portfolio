@@ -148,7 +148,12 @@ const Scene = () => {
   return (
     <>
       <div className="character-container">
-        <div className="character-model" ref={canvasDiv}>
+        <div 
+          className="character-model" 
+          ref={canvasDiv}
+          role="img"
+          aria-label="Modèle 3D interactif représentant Jacques Moriba"
+        >
           <div className="character-rim"></div>
           <div className="character-hover" ref={hoverDivRef}></div>
         </div>

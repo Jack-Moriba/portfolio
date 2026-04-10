@@ -14,6 +14,8 @@ import setSplitText from "./utils/splitText";
 import ErrorBoundary from "./ErrorBoundary";
 import SkipLinks from "./SkipLinks";
 import Toast from "./Toast";
+import { Helmet } from "react-helmet-async";
+import Lenis from "lenis";
 
 // Lazy load heavy components
 const TechStack = lazy(() => import("./TechStack"));
@@ -24,12 +26,32 @@ const CinematicIntro = lazy(() => import("./CinematicIntro"));
 const AnalyticsDashboard = lazy(() => import("./AnalyticsDashboard"));
 const EasterEggGame = lazy(() => import("./EasterEggGame"));
 
-const MainContainer = ({ children }: PropsWithChildren) => {
+interface MainContainerProps extends PropsWithChildren {
+  onOpenGuineaPay?: () => void;
+}
+
+const MainContainer = ({ children, onOpenGuineaPay }: MainContainerProps) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 1024
   );
 
   useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    const rafId = requestAnimationFrame(raf);
+
     const resizeHandler = () => {
       setSplitText();
       setIsDesktopView(window.innerWidth > 1024);
@@ -38,12 +60,22 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
     };
   }, []);
 
   return (
-    <ErrorBoundary>
-      <ThemeProvider>
+    <>
+      <Helmet>
+        <title>Jacques Moriba Thea | Portfolio</title>
+        <meta name="description" content="Portfolio de Jacques Moriba Thea, Développeur Full Stack et Designer Graphique basé en Guinée." />
+        <meta property="og:title" content="Jacques Moriba Thea | Portfolio" />
+        <meta property="og:description" content="Portfolio immersif mettant en avant mes compétences en React, Node.js, et design 3D." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <ErrorBoundary>
+        <ThemeProvider>
         <SkipLinks />
         <Toast />
         <Suspense fallback={null}>
@@ -52,7 +84,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <div className="container-main" role="document">
           <Cursor />
           <header role="banner">
-            <Navbar />
+            <Navbar onOpenGuineaPay={onOpenGuineaPay} />
           </header>
           <SocialIcons />
           <FuturisticFeatures />
@@ -90,6 +122,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         </div>
       </ThemeProvider>
     </ErrorBoundary>
+    </>
   );
 };
 
