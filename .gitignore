@@ -27,3 +27,14 @@ dist-ssr
 backup/
 .env
 .vercel
+
+# Large files
+*.pptx
+*.ppt
+*.pdf
+*.mp4
+*.mov
+*.avi
+*.zip
+*.rar
+public/images/designs/CLIENTS/

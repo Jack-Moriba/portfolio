@@ -102,11 +102,11 @@
 
 .cinematic-name {
   font-family: 'Orbitron', monospace;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 900;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -119,13 +119,14 @@
 
 .cinematic-title {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #ff00ff;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.1em;
   margin-top: 1rem;
   opacity: 0;
   text-shadow: 0 0 10px #ff00ff;
+  white-space: nowrap;
 }
 
 .cinematic-line {
@@ -275,12 +276,13 @@
 /* Responsive */
 @media (max-width: 768px) {
   .cinematic-name {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    letter-spacing: 0.03em;
   }
   
   .cinematic-title {
-    font-size: 1rem;
-    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
   }
   
   .scan-text {
@@ -294,10 +296,12 @@
 
 @media (max-width: 480px) {
   .cinematic-name {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.02em;
   }
   
   .cinematic-title {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
   }
 }
